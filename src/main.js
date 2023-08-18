@@ -1,12 +1,16 @@
 // Este es el punto de entrada de tu aplicacion
-/*import {} from './lib/index.js';*/
-/*import { createPost, deletePost, editPost, getPosts, init, login, register } from "./lib/index.js";
-/*myFunction();*/
+
+import { myFunction} from './lib/index.js';
+
+myFunction();
+
 
 import home from './components/home.js';
 import login from './components/login.js';
 import error from './components/error.js';
 import register from './components/register.js';
+import publish from './components/publish.js';
+
 
 const root=document.getElementById('root');
 
@@ -16,6 +20,7 @@ const routes=[
     {path:'/login', component:login},
     {path:'/error',component:error},
     {path:'/register',component:register},
+    {path:'/publish',component:publish},
 ];
 
 const defaultRoute='/';
@@ -39,3 +44,5 @@ window.onpopstate=()=>{
     navigateTo(window.location.pathname)
 }
 navigateTo(window.location.pathname||defaultRoute);
+
+

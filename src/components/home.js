@@ -1,11 +1,10 @@
 function home(navigateTo){
 
     const section =document.createElement('section');
-
     const containerHeader =document.createElement('header');
     containerHeader.classList.add('header');
 
-    const title =document.createElement('h2');
+    const title =document.createElement('h1');
     const button =document.createElement('button');
     const button2 =document.createElement('button');
     const background=document.createElement('img');
