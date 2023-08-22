@@ -45,29 +45,17 @@ function createRegisterForm(navigateTo){
     
     buttonRegister.addEventListener('click', () => {
         // Get the values entered by the user
-        const name = inputName.value;
-        const apellidos = inputApellidos.value;
-        const nacimiento = inputNacimiento.value;
-        const email = document.querySelector(".input-fieldEmail").value
-        const password = document.querySelector(".input-fieldPassword").value
+        const email = document.querySelector(".input-fieldEmail").value;
+        const password = document.querySelector(".input-fieldPassword").value;
 
-        // Create an object to store the user data
-        const userData = {
-            name: name,
-            apellidos: apellidos,
-            nacimiento: nacimiento,
-            email: email,
-            password: password
-        };
-
-          try {
+      
             const success = register(email, password); // Llama a la función de registro
             if (success) {
-              console.log('Usuario registrado exitosamente');
+              alert('Usuario registrado exitosamente');
               navigateTo('/login'); // Navegar al login para su primer inicio de sesión
             }
-          } catch (error) {
-            console.error('Error al registrar usuario:', error.message);
+            else{
+            alert('Error al registrar usuario:');
           }
       });
         /*Convert the userData object to a JSON string and store it in local storage

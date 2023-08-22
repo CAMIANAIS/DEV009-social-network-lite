@@ -1,9 +1,3 @@
-// Este es el punto de entrada de tu aplicacion
-
-import { myFunction} from './lib/index.js';
-
-myFunction();
-
 
 import home from './components/home.js';
 import login from './components/login.js';
@@ -44,5 +38,6 @@ window.onpopstate=()=>{
     navigateTo(window.location.pathname)
 }
 navigateTo(window.location.pathname||defaultRoute);
+
 
 

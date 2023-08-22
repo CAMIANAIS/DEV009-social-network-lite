@@ -84,7 +84,7 @@ h1{
     font-size:xx-large;
     justify-content: space-around;
 }
-.icon {
+.img-logo, .user1, .user2 {
     width: 40px;
     height: 40px;
     cursor: pointer;
@@ -102,4 +102,10 @@ h1{
 .contenedor{
     width:80%;
     color: #fff;
+}
+
+
+
+.muro{
+    background-color: #D9D9D9;
 }

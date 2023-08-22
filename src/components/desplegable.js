@@ -1,14 +1,20 @@
-import createRegisterForm from './createRegisterForm';
-import publishIcon from './components/img/'; // Reemplaza con la ruta correcta
-
-// ... Código anterior ...
-
-const nav = document.createElement('nav');
-const dropdownButton = document.createElement('button');
-dropdownButton.innerHTML = `<img src="${publishIcon}" alt="Publish Icon"> Menú`; // Agrega el ícono
-dropdownButton.classList.add('dropdown-button'); // Agrega una clase para estilos
-
-// ... Código anterior ...
-
-document.body.appendChild(header);
-document.body.appendChild(mainContent);
+export const createDropdownMenu = () => {
+    const asideMenu = document.createElement('aside');
+    asideMenu.classList.add('sidebar-menu');
+    /*const sandwich=document.createElement('img');
+    sandwich.src="components/img/bars-solid.svg";
+    sandwich.classList.add('img-logo');*/
+  
+    asideMenu.innerHTML = `
+      <div class="menu-title">Menu</div>
+      <ul>
+        <li id='home' class='home'>Home</li>
+        <li id='search' class='search'>Search</li>
+        <li id='notifications' class='notifications'>Notifications</li>
+        <li id='profile' class='profile'>Profile</li>
+        <li id='configuration' class='configuration'>Configuration</li>
+      </ul>
+    `;
+   return asideMenu;
+}
+export default createDropdownMenu;

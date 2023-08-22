@@ -1,53 +1,50 @@
+import { createDropdownMenu } from './desplegable.js';
 function publish(navigateTo) {
-    const section2 = document.createElement('section');
-    section2.style.backgroundColor = '#D9D9D9';
-
+    const section3 = document.createElement('section');
     const containerHeader = document.createElement('header');
     containerHeader.classList.add('header');
-   
-
-    const title = document.createElement('h2');
-    const inputPublish = document.createElement('input');
-    const buttonPublish = document.createElement('button');
-    const buttonReturn1 = document.createElement('button'); // Declare buttonReturn1
     const sandwich=document.createElement('img');
     sandwich.src="components/img/bars-solid.svg";
-    const parrafo = document.createElement('p');
+    sandwich.classList.add('img-logo');
+
+    const title = document.createElement('h2');
+    const profile=document.createElement('img');
+    profile.src="components/img/user1.png";
+    profile.classList.add('user1');
+    const inputFeed = document.createElement('input');
+    
+
 
     // Añade clases a los elementos para estilizarlos con CSS
-    inputPublish.classList.add('input-field');
-    buttonPublish.classList.add('btn');
-    buttonReturn1.classList.add('btn'); // Add class to buttonReturn1
-    sandwich.classList.add('icon');
+    inputFeed.classList.add('input-field');
 
-    inputPublish.placeholder = 'Publicacion';
+    inputFeed.placeholder = 'Ali,cuentanos tu experiencia en el lugar';
 
     title.textContent = 'Arequipa 360';
-    buttonPublish.textContent = 'Publicar';
-    buttonReturn1.textContent = 'Return to home';
 
-    buttonReturn1.addEventListener('click', () => {
-        navigateTo('/');
-    });
+    const postDefect = document.createElement('div');
+    postDefect.innerHTML = `
+      <div class="postDefect">Juan Rocas</div>
+        <img src="components/img/user2.png" class="user2" alt="photo-user2">
+        <p> Me gusto la experiencia en Uchumayo...ver mas</p>
+        <img src="components/img/experience1.jpg" class="exp" alt="exp-user2">
+    `;
 
-    buttonPublish.addEventListener('click', () => {
-        // Get the values entered by the user
-        const publish = inputPublish.value;
 
-        // Create an object to store the user data
-        const userData = {
-            publish: publish,
-        };
-
-        // Convert the userData object to a JSON string and store it in local storage
-        localStorage.setItem('userData', JSON.stringify(userData));
+    sandwich.addEventListener('click', () => {
+      const dropdownMenu = createDropdownMenu(); // Use your createDropdownMenu function here
+      section3.appendChild(dropdownMenu); // Append the dropdown menu to the section
+    
+      // Toggle the visibility of the dropdown menu
+      dropdownMenu.style.display = dropdownMenu.style.display === 'none' ? 'block' : 'none';
     });
     containerHeader.appendChild(sandwich);
-    section2.appendChild(containerHeader);
+    section3.appendChild(containerHeader);
     // Agrega los elementos al section2
-    section2.append(title, inputPublish, buttonPublish, buttonReturn1);
+    section3.append(title,profile,inputFeed,postDefect);
 
-    return section2;
+    return section3;
 }
 
 export default publish;
+
