@@ -5,6 +5,7 @@
     --container-color: #279925;
     --accent-font-color: #5DD162;
     --body-font-color: #BBD0DB;
+    --input-color:#A49C9C;
 
 }
 
@@ -84,7 +85,7 @@ h1{
     font-size:xx-large;
     justify-content: space-around;
 }
-.img-logo, .user1, .user2 {
+.img-logo, .user1, .user2, .user3, .like, .comment{
     width: 40px;
     height: 40px;
     cursor: pointer;
@@ -108,4 +109,43 @@ h1{
 
 .muro{
     background-color: #D9D9D9;
+}
+.postDefect, .post1, .post2, .contenedoriconos{
+    display:flex;
+    font-family:'Galindo';
+    gap: 4%;
+}
+.postInput{
+    display:flex;
+    font-family:'Galindo';
+    margin: 2%;
+}
+.inputFeed{
+
+    background-color: var(--input-color);
+    font-family:'Galindo';
+    width: 80%;
+    padding: 5px;
+    border-radius: 4px;
+    border-color: var(--input-color);
+    
+}
+
+.inputFeed::placeholder{
+    color:#fff;
+    font-size:90%;
+}
+
+.idpost1,.idpost2{
+    background-color: var(--background-color);
+    margin:2%;
+    font-size: small;
+}
+
+/*mobile (iphone pro 12)*/
+@media (max-width:820px){
+.exp{
+    width:40%
+}
+
 }

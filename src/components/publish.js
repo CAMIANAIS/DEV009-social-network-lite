@@ -1,4 +1,6 @@
-import { createDropdownMenu } from './desplegable.js';
+/*import { createDropdownMenu } from './desplegable.js';
+import { createPostModal } from './createpost.js';*/
+
 function publish(navigateTo) {
     const section3 = document.createElement('section');
     const containerHeader = document.createElement('header');
@@ -6,44 +8,68 @@ function publish(navigateTo) {
     const sandwich=document.createElement('img');
     sandwich.src="components/img/bars-solid.svg";
     sandwich.classList.add('img-logo');
-
     const title = document.createElement('h2');
-    const profile=document.createElement('img');
-    profile.src="components/img/user1.png";
-    profile.classList.add('user1');
-    const inputFeed = document.createElement('input');
-    
-
-
-    // Añade clases a los elementos para estilizarlos con CSS
-    inputFeed.classList.add('input-field');
-
-    inputFeed.placeholder = 'Ali,cuentanos tu experiencia en el lugar';
-
     title.textContent = 'Arequipa 360';
 
-    const postDefect = document.createElement('div');
-    postDefect.innerHTML = `
-      <div class="postDefect">Juan Rocas</div>
-        <img src="components/img/user2.png" class="user2" alt="photo-user2">
-        <p> Me gusto la experiencia en Uchumayo...ver mas</p>
-        <img src="components/img/experience1.jpg" class="exp" alt="exp-user2">
+    const postStart=document.createElement('div');
+    postStart.classList.add('postInput');
+    postStart.innerHTML=`
+  
+    <img src="components/img/user1.png" class="user1" alt="user1">
+    <input id="inputFeed" class="inputFeed" placeholder="Ali, cuéntanos tu experiencia en el lugar">
     `;
+    const postDefect1 = document.createElement('div');
+    postDefect1.classList.add('idpost1');
+    postDefect1.innerHTML = `
+      <div id=1 class=post1>
+        <img src="components/img/user2.png" class="user2" alt="photo-user2">
+        <p>Juan Rocas</p>
+      </div>
+      <div class="postDefect">
+        <img src="components/img/experience1.jpg" class="exp" alt="exp-user2">
+        <p> Me gusto la experiencia en Uchumayo, viaje en familia y...ver mas</p>
+      </div>
+      <div class="contenedoriconos">
+        <img src="components/img/like.png" class="like" alt="like">
+        <img src="components/img/comments-regular.svg" class="comment" alt="comment">
+      </div>
 
+      `;
+    const postDefect2 = document.createElement('div');
+    postDefect2.classList.add('idpost2');
+    postDefect2.innerHTML = `
+      <div id=2 class=post2>
+        <img src="components/img/user3.png" class="user3" alt="photo-user3">
+        <p>Lola Morales</p>
+      </div>
+      <div class="postDefect">
+        <img src="components/img/experience1.jpg" class="exp" alt="exp-user2">
+        <p> Recomiendo la experiencia en Uchumayo, viaje con amigas y...ver mas</p>
+      </div>
+      <div class="contenedoriconos">
+        <img src="components/img/like.png" class="like" alt="like">
+        <img src="components/img/comments-regular.svg" class="comment" alt="comment">
+      </div>
 
-    sandwich.addEventListener('click', () => {
-      const dropdownMenu = createDropdownMenu(); // Use your createDropdownMenu function here
-      section3.appendChild(dropdownMenu); // Append the dropdown menu to the section
-    
-      // Toggle the visibility of the dropdown menu
-      dropdownMenu.style.display = dropdownMenu.style.display === 'none' ? 'block' : 'none';
-    });
+        
+    `;
     containerHeader.appendChild(sandwich);
     section3.appendChild(containerHeader);
-    // Agrega los elementos al section2
-    section3.append(title,profile,inputFeed,postDefect);
 
-    return section3;
+    /*sandwich.addEventListener('click', () => {
+      const dropdownMenu = createDropdownMenu();
+      section3.appendChild(dropdownMenu);
+      dropdownMenu.style.display = dropdownMenu.style.display === 'none' ? 'block' : 'none';
+  });
+
+    postStart.addEventListener('click',()=>{
+      const createPost=createPostModal();
+      document.body.appendChild(createPost);
+    });*/
+
+  section3.append(postStart,postDefect1,postDefect2);
+
+  return section3;
 }
 
 export default publish;

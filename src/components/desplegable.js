@@ -15,6 +15,8 @@ export const createDropdownMenu = () => {
         <li id='configuration' class='configuration'>Configuration</li>
       </ul>
     `;
+    asideMenu.append();
    return asideMenu;
+   
 }
 export default createDropdownMenu;

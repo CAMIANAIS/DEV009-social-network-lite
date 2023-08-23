@@ -12,7 +12,7 @@ import {
 
 import { init } from '../src/lib/services';
 
-// Mock de localStorage
+
 beforeEach(() => {
   const users = [{ email: 'prueba@example.com', password: 'abcdefg' }];
   const loggedInUser = { email: 'prueba@example.com', password: 'abcdefg' };
@@ -54,14 +54,14 @@ describe('init function', () => {
 // TEST para la funcion de login
 describe('Login function', () => {
   it('Should return true for valid credentials', () => {
-    const result = login('test@example.com', '123456');
+    const result = login('prueba@example.com', 'abcdefg');
 
     expect(result).toBe(true);
-    expect(localStorage.setItem).toHaveBeenCalledWith('user', JSON.stringify({ email: 'test@example.com', password: '123456' }));
+    expect(localStorage.setItem).toHaveBeenCalledWith('user', JSON.stringify({ email: 'prueba@example.com', password: 'abcdefg' }));
   });
 
   it('Should return undefined for invalid credentials', () => {
-    const result = login('test@example.com', 'wrongpassword');
+    const result = login('prueba@example.com', 'nopassword');
     expect(result).toBeUndefined();
     expect(localStorage.setItem).not.toHaveBeenCalled();
   });
@@ -70,7 +70,7 @@ describe('Login function', () => {
   // simula que no hay usuarios en localStorage
     localStorage.getItem.mockReturnValueOnce(null);
 
-    const result = login('anyemail@example.com', 'anypassword');
+    const result = login('noemail@example.com', 'nopassword');
 
     expect(result).toBe(false);
     expect(localStorage.setItem).not.toHaveBeenCalled();
@@ -90,29 +90,29 @@ describe('Logout function', () => {
 
 // TEST para la funcion register
 describe('Register function', () => {
-  it('Should register a new user successfully', () => {
+  it('Should register a new user', () => {
     localStorage.getItem.mockReturnValueOnce(null); // No hay usuarios previamente registrados
-    const result = register('test@example.com', 'password123');
+    const result = register('prueba@example.com', 'abcdefg');
     expect(result).toBe(true);
-    expect(localStorage.setItem).toHaveBeenCalledWith('users', JSON.stringify([{ email: 'test@example.com', password: 'password123' }]));
+    expect(localStorage.setItem).toHaveBeenCalledWith('users', JSON.stringify([{ email: 'prueba@example.com', password: 'abcdefg3' }]));
   });
 
   it('Should throw an error with an invalid email', () => {
     expect(() => {
-      register('notanemail', 'password123');
+      register('anotheremail', 'abcdefg3');
     }).toThrow('Invalid email');
   });
 
   it('Should throw an error with a short password', () => {
     expect(() => {
-      register('test@example.com', 'pass');
+      register('prueba@example.com', 'hola');
     }).toThrow('Password must be at least 6 characters long');
   });
 
   it('Should throw an error if user already exists', () => {
-    localStorage.getItem.mockReturnValueOnce(JSON.stringify([{ email: 'test@example.com', password: 'password123' }]));
+    localStorage.getItem.mockReturnValueOnce(JSON.stringify([{ email: 'prueba@example.com', password: 'abcdefg' }]));
     expect(() => {
-      register('test@example.com', 'password1234');
+      register('prueba@example.com', 'abcdefg');
     }).toThrow('User already exists');
   });
 });
@@ -121,7 +121,7 @@ describe('Register function', () => {
 describe('getLoggedInUser function', () => {
   it('Should return the logged-in user if it exists', () => {
     const result = getLoggedInUser();
-    expect(result).toEqual({ email: 'test@example.com', password: '123456' });
+    expect(result).toEqual({ email: 'prueba@example.com', password: 'abcdefg' });
   });
 
   it('Should return null if no user is logged in', () => {
