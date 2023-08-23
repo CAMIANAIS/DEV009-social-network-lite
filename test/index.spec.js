@@ -1,4 +1,5 @@
-// importamos la funcion que vamos a testear
+
+// se importan las funciones a testear
 import {
   login,
   logout,
@@ -9,6 +10,16 @@ import {
   editPost,
   deletePost,
 } from '../src/lib/index';
+
+it('should be a function',()=>{
+  expect(typeof login).toBe('function');
+});
+
+it('Should navigate to Login',()=>{
+  const toLogin=registerElement.querySelector('toLogin');
+  toLogin.click();
+  expect(NavigateToMock).toHaveBeenCalledWith('/');
+});
 
 import { init } from '../src/lib/services';
 
@@ -134,13 +145,13 @@ describe('getLoggedInUser function', () => {
 // TEST para la funcion createPost
 describe('createPost function', () => {
   it('Should create a post successfully', () => {
-    const id = createPost('This is a valid content', 'test@example.com');
+    const id = createPost('Valid post', 'pruebat@example.com');
     expect(typeof id).toBe('string');
     expect(id.length).toBeGreaterThan(0);
 
     const existingPosts = [
-      { id: 'post1', content: 'content1', email: 'test1@example.com' },
-      { id: 'post2', content: 'content2', email: 'test2@example.com' },
+      { id: 'posta', content: 'contenidoa', email: 'prueba1@example.com' },
+      { id: 'postb', content: 'contenidob', email: 'prueba2@example.com' },
     ];
 
     expect(localStorage.setItem).toHaveBeenCalledWith(
@@ -189,8 +200,8 @@ describe('getPosts function', () => {
 
   it('Should return an array of posts if they exist in localStorage', () => {
     const mockPosts = [
-      { id: 'post1', content: 'Test content 1', email: 'test1@example.com' },
-      { id: 'post2', content: 'Test content 2', email: 'test2@example.com' },
+      { id: 'posta', content: 'contenidoa', email: 'prueba1@example.com' },
+      { id: 'postb', content: 'contenidob', email: 'prueba2@example.com' },
     ];
 
     localStorage.getItem.mockReturnValueOnce(JSON.stringify(mockPosts));

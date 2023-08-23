@@ -1,0 +1,3 @@
+/* doble exclamación devuelve un booleano, Si existe un valor, el resultado será true, lo que significa que el usuario ha iniciado sesión. 
+Si no hay valor (o es null), el resultado será false, indicando que el usuario no ha iniciado sesión.*/
+export const UserLogeado = () => !!localStorage.getItem('user');

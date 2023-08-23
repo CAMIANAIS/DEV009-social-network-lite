@@ -1,11 +1,14 @@
 export const createDropdownMenu = () => {
-    const asideMenu = document.createElement('aside');
-    asideMenu.classList.add('sidebar-menu');
-    /*const sandwich=document.createElement('img');
-    sandwich.src="components/img/bars-solid.svg";
-    sandwich.classList.add('img-logo');*/
-  
-    asideMenu.innerHTML = `
+  const nav = document.createElement('nav');
+  nav.classList.add('menu');
+
+  const div1 = document.createElement('div');
+  div1.id = 'icon-menu';
+  div1.innerHTML = '<img src="components/img/bars-solid.svg" class="img-logo" alt="desplegable">';
+
+  const asideMenu = document.createElement('aside');
+  asideMenu.classList.add('sidebar-menu');
+  asideMenu.innerHTML = `
       <div class="menu-title">Menu</div>
       <ul>
         <li id='home' class='home'>Home</li>
@@ -15,8 +18,18 @@ export const createDropdownMenu = () => {
         <li id='configuration' class='configuration'>Configuration</li>
       </ul>
     `;
-    asideMenu.append();
-   return asideMenu;
-   
-}
-export default createDropdownMenu;
+  nav.appendChild(div1);
+  document.body.appendChild(nav);
+
+  // Funcionalidad para mostrar el menu
+  div1.addEventListener('click', () => {
+    asideMenu.classList.toggle('open');
+  });
+
+  return {
+    iconElement: div1,
+    navElement: nav,
+    asideMenuElement: asideMenu,
+  };
+};
+
