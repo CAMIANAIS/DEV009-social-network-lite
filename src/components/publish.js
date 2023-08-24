@@ -1,4 +1,5 @@
-import { createDropdownMenu } from './desplegable.js';
+/* import { createDropdownMenu } from './desplegable.js'; */
+import { editModal } from './editpost.js';
 import { createPostModal } from './createpost.js'; 
 
 function publish(navigateTo) {
@@ -6,7 +7,7 @@ function publish(navigateTo) {
   const containerHeader = document.createElement('header');
   containerHeader.classList.add('header');
   const sandwich=document.createElement('img');
-  const menuComponents = createDropdownMenu();
+  /* const menuComponents = createDropdownMenu(); */
   sandwich.src="components/img/bars-solid.svg";
   sandwich.classList.add('img-logo');
   const title = document.createElement('h2');
@@ -59,17 +60,19 @@ function publish(navigateTo) {
   section3.appendChild(containerHeader);
 
   sandwich.addEventListener('click', () => {
-    const dropdownMenu = createDropdownMenu();
-    section3.appendChild(dropdownMenu);
-    dropdownMenu.style.display = dropdownMenu.style.display === 'none' ? 'block' : 'none';
-});
+    editModal();
+  });
 
   postStart.addEventListener('click',()=>{
-    console.log("hola");
     createPostModal();
     /* document.body.appendChild(createPost); */
   }); 
-  section3.append(postStart, postDefect1, postDefect2, menuComponents.asideMenuElement);
+
+  postDefect1.addEventListener('click',()=>{
+    editModal();
+    /* document.body.appendChild(createPost); */
+  }); 
+  section3.append(postStart, postDefect1, postDefect2);
   return section3;
 }
 export default publish;

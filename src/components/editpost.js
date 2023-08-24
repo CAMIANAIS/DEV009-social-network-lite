@@ -15,9 +15,10 @@ export const editModal = () => {
   // Obtener todos los posts
   const posts = getPosts();
   let commentsIds = [];
-  const recipeComments = localStorage.getItem(`comments_${recipe.id}`);
-  if (recipeComments) {
-    const comments = JSON.parse(recipeComments);
+  posts.forEach((post) => {
+  const postComments = localStorage.getItem(`comments_${post.id}`);
+  if (postComments) {
+    const comments = JSON.parse(postComments);
     commentsIds = comments.ids;
   }
 
@@ -42,11 +43,13 @@ export const editModal = () => {
       const postText = document.createElement('p');
       postText.textContent = post.content;
 
-      const editBtn = document.createElement('i');
-      editBtn.className = 'fa-solid fa-pen-to-square';
+      const editBtn = document.createElement('img');
+      editBtn.src="components/img/comments-regular.svg";
+      editBtn.className.add('comment');
 
-      const deleteBtn = document.createElement('i');
-      deleteBtn.className = 'fa-solid fa-trash-can';
+      const deleteBtn = document.createElement('img');
+      editBtn.src="components/img/trash-can-regular.svg";
+      editBtn.className.add('delete');
 
       if (currentUserEmail === post.email) {
         editBtn.addEventListener('click', () => {
@@ -71,7 +74,8 @@ export const editModal = () => {
       postsList.append(postItem);
     });
   }
-
+});
+  
   const closeModal = () => {
     document.body.removeChild(modal);
   };
@@ -83,8 +87,7 @@ export const editModal = () => {
       closeModal();
     }
   });
-
-  content.append(closeModalIcon, postsList);
+  content.append( postsList);
   modal.append(content);
 
   // Agregar el modal al body

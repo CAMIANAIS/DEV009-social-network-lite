@@ -7,6 +7,7 @@ function createRegisterForm(navigateTo){
   const inputNacimiento = document.createElement('input');
   const inputEmail = document.createElement('input');
   const inputPass = document.createElement('input');
+  inputPass.type = 'password';
   const inputconfirmPass = document.createElement('input');
   const buttonRegister = document.createElement('button');
   const buttonReturn1 = document.createElement('button');

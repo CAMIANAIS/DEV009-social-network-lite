@@ -85,13 +85,20 @@ h1{
     font-size:xx-large;
     justify-content: space-around;
 }
-.img-logo, .user1, .user2, .user3, .like, .comment{
+.img-logo, .user1, .user2, .user3 {
     width: 40px;
     height: 40px;
     cursor: pointer;
     padding: 10px;
     display: flex;
 }
+.like, .comment, .delete, .edit{
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    padding: 10px;
+    display: flex;
+}   
 
 .logo {
     width: 150px;
@@ -108,7 +115,7 @@ h1{
 .muro{
     background-color: #D9D9D9;
 }
-.postDefect, .post1, .post2, .contenedoriconos{
+.postDefect, .post1, .post2, .contenedoriconos, .iconContainer{
     display:flex;
     font-family:'Galindo';
     gap: 4%;
@@ -156,8 +163,105 @@ h1{
     background-color: #FFF;
     padding: 20px;
     border-radius: 8px;
+    width: 40%;
+  }
+  .input-field {
+    position: relative;
+    width: 100%;
+  }
+  .input-field {
+    width: 100%;
+    box-sizing: border-box; /*Asegura que los paddings y bordes están incluidos en el ancho */
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    resize: vertical /*Permitir al usuario ajustar el tamaño verticalmente*/
+  }
+
+  .iconContainer{
+    justify-content: flex-end;
+  }
+/*menu */
+
+   .sidebar-menu {
+     position: fixed; /* Posición fija */
+     top: 0;
+     left: -300px; /* Esto lo coloca fuera de la pantalla por defecto */
+     width: 300px; /* Ancho del menú */
+     height: 100%;
+     background-color: #ffffff;
+     overflow-y: auto; /* Si el contenido excede la altura, será desplazable */
+     transition: 0.3s; /* Animación suave al aparecer */
+     z-index: 1000; /* Se asegura de que esté por encima de otros elementos */
+   }
+   
+   .sidebar-menu.open {
+     left: 0; /* Esto lo mueve a su posición visible */
+   }
+   
+   .sidebar-menu .menu-title {
+     font-weight: bold;
+     padding: 10px 15px;
+     background-color: #f5f5f5;
+   }
+
+/* para comentarios*/
+
+/* Estilos para el modal cuando muestra todos los comentarios */
+.commentPostAll {
+    margin: 0;
+    cursor: pointer;
+  }
+  .posts-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
   }
   
+  .posts-list {
+    padding: 0;
+  }
+  
+  .li-postComents {
+    position: relative;
+    list-style: none;
+    border: 1px solid #e7e7e7;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s;
+    background-color: #fafafa;
+  }
+  
+  .li-postComents:hover {
+    transform: translateY(-5px); /* Efecto "levantar" al pasar el mouse por encima */
+  }
+  .post-email {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    font-size: 12px;
+    opacity: 0.6;
+    color: #ffffff;
+  }
+
+  /* editar bot[on */
+  .confirm-content, .edit-content {
+    position: relative; /* Se agrega esto para que el botón close funcione correctamente */
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 400px;
+    width: 80%;
+  }
 /*mobile (iphone pro 12)*/
 @media (max-width:820px){
 .exp{
