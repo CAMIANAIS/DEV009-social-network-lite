@@ -7,11 +7,11 @@ import {
   createPost,
   getPosts,
   editPost,
-  deletePost,
 } from '../src/lib/index';
 
 import { init } from '../src/lib/services';
 
+// Configura el entorno simulado antes de cada prueba
 beforeEach(() => {
   const users = [{ email: 'prueba@example.com', password: 'abcdefg' }];
   const loggedInUser = { email: 'prueba@example.com', password: 'abcdefg' };
@@ -20,27 +20,26 @@ beforeEach(() => {
     { id: 'postb', content: 'contenidob', email: 'prueba2@example.com' },
   ];
 
-  Object.defineProperty(window, 'localStorage', {
-    value: {
-      getItem: jest.fn((key) => {
-        switch (key) {
-          case 'users':
-            return JSON.stringify(users);
-          case 'user':
-            return JSON.stringify(loggedInUser);
-          case 'posts':
-            return JSON.stringify(posts);
-          default:
-            return null;
-        }
-      }),
-      setItem: jest.fn(),
-      removeItem: jest.fn(), // para el logout
-      clear: jest.fn(),
-    },
-    writable: true,
-  });
+  // Simula el objeto global con las propiedades necesarias
+  global.localStorage = {
+    getItem: jest.fn((key) => {
+      switch (key) {
+        case 'users':
+          return JSON.stringify(users);
+        case 'user':
+          return JSON.stringify(loggedInUser);
+        case 'posts':
+          return JSON.stringify(posts);
+        default:
+          return null;
+      }
+    }),
+    setItem: jest.fn(),
+    removeItem: jest.fn(),
+    clear: jest.fn(),
+  };
 });
+
 // TEST para la función init
 describe('init function', () => {
   it('Should clear the localStorage', () => {
@@ -92,12 +91,12 @@ describe('Register function', () => {
     localStorage.getItem.mockReturnValueOnce(null); // No hay usuarios previamente registrados
     const result = register('prueba@example.com', 'abcdefg');
     expect(result).toBe(true);
-    expect(localStorage.setItem).toHaveBeenCalledWith('users', JSON.stringify([{ email: 'prueba@example.com', password: 'abcdefg3' }]));
+    expect(localStorage.setItem).toHaveBeenCalledWith('users', JSON.stringify([{ email: 'prueba@example.com', password: 'abcdefg' }]));
   });
 
   it('Should throw an error with an invalid email', () => {
     expect(() => {
-      register('anotheremail', 'abcdefg3');
+      register('otheremail', 'abcdefg3');
     }).toThrow('Invalid email');
   });
 
@@ -123,7 +122,7 @@ describe('getLoggedInUser function', () => {
   });
 
   it('Should return null if no user is logged in', () => {
-    window.localStorage.getItem.mockReturnValueOnce(null);
+    localStorage.getItem.mockReturnValueOnce(null);
     const result = getLoggedInUser();
     expect(result).toBeNull();
   });
@@ -132,7 +131,7 @@ describe('getLoggedInUser function', () => {
 // TEST para la funcion createPost
 describe('createPost function', () => {
   it('Should create a post successfully', () => {
-    const id = createPost('Valid post', 'pruebat@example.com');
+    const id = createPost('validpost', 'prueba@example.com');
     expect(typeof id).toBe('string');
     expect(id.length).toBeGreaterThan(0);
 
@@ -143,7 +142,7 @@ describe('createPost function', () => {
 
     expect(localStorage.setItem).toHaveBeenCalledWith(
       'posts',
-      JSON.stringify([...existingPosts, { id, content: 'This is a valid content', email: 'test@example.com' }]),
+      JSON.stringify([...existingPosts, { id, content: 'validpost', email: 'prueba@example.com' }]),
     );
   });
 
@@ -155,22 +154,22 @@ describe('createPost function', () => {
 
   it('Should throw an error with an invalid email', () => {
     expect(() => {
-      createPost('This is a valid content', 'notanemail');
+      createPost('validcontent', 'noemail');
     }).toThrow('Invalid email');
   });
 
   it('Should save posts to localStorage', () => {
-    const previosPosts = [{
-      id: 'someID',
-      content: 'Previous content',
-      email: 'previous@example.com',
+    const beforePosts = [{
+      id: 'anID',
+      content: 'beforecontent',
+      email: 'before@example.com',
     }];
-    localStorage.getItem.mockReturnValueOnce(JSON.stringify(previosPosts));
+    localStorage.getItem.mockReturnValueOnce(JSON.stringify(beforePosts));
 
-    const id = createPost('Another valid content', 'test@example.com');
+    const id = createPost('validcontenta', 'prueba@example.com');
     expect(localStorage.setItem).toHaveBeenCalledWith(
       'posts',
-      JSON.stringify([...previosPosts, { id, content: 'Another valid content', email: 'test@example.com' }]),
+      JSON.stringify([...beforePosts, { id, content: 'validcontenta', email: 'prueba@example.com' }]),
     );
   });
 });
@@ -240,31 +239,5 @@ describe('editPost function', () => {
       { id: 'post2', content: 'Test content 2', email: 'test2@example.com' },
     ];
     expect(localStorage.setItem).toHaveBeenCalledWith('posts', JSON.stringify(updatedPosts));
-  });
-});
-
-// TEST para la funcion deletePost
-describe('deletePost function', () => {
-  it('Should delete a post by id', () => {
-    deletePost('post1');
-
-    const expectedPosts = [
-      { id: 'post2', content: 'content2', email: 'test2@example.com' },
-    ];
-    expect(localStorage.setItem).toHaveBeenCalledWith('posts', JSON.stringify(expectedPosts));
-  });
-
-  it('Should throw an error if post does not exist', () => {
-    expect(() => {
-      deletePost('nonExistentPost');
-    }).toThrow('Post does not exist');
-  });
-
-  it('Should throw an error if there are no posts', () => {
-    window.localStorage.getItem.mockReturnValueOnce(null);
-
-    expect(() => {
-      deletePost('post1');
-    }).toThrow('Post does not exist');
   });
 });

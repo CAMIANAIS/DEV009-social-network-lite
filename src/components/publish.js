@@ -1,4 +1,5 @@
 /* import { createDropdownMenu } from './desplegable.js'; */
+import imagenicono from './img/bars-solid.svg';
 import { createPostModal } from './createpost.js';
 import { createLoginArea } from './loginConfirm.js';
 /* import { handleInteractionPosts } from './interaccion.js'; */
@@ -9,7 +10,7 @@ function publish(navigateTo) {
   containerHeader.classList.add('header');
   const sandwich = document.createElement('img');
   /* const menuComponents = createDropdownMenu(); */
-  sandwich.src = 'components/img/bars-solid.svg';
+  sandwich.src = imagenicono;
   sandwich.classList.add('img-logo');
   const title = document.createElement('h2');
   title.textContent = 'Arequipa 360';

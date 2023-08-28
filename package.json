@@ -16,6 +16,9 @@
     "stylelint": "stylelint --aei src/**/*.css",
     "pretest": "npm run htmlhint && npm run eslint && npm run stylelint",
     "test": "jest --coverage",
+    "jest": {
+      "testEnvironment": "jsdom"
+    },
     "dev": "vite dev src",
     "start": "npm run dev",
     "build": "vite build",
@@ -29,6 +32,7 @@
     "eslint-plugin-jest": "^25.3.0",
     "htmlhint": "^1.0.0",
     "jest": "^27.0.1",
+    "jest-environment-jsdom": "^29.6.4",
     "regenerator-runtime": "^0.13.1",
     "stylelint": "^14.1.0",
     "stylelint-config-recommended": "^6.0.0",
