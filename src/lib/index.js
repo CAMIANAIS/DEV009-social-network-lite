@@ -9,7 +9,7 @@ import {
   editPost as editPostRecipe,
   deletePost as deletePostRecipe,
 } from './services.js';
-  
+
 const login = (email, password) => userLogin(email, password);
 const register = (email, password) => registerPage(email, password);
 const logout = () => userLogout();
@@ -18,8 +18,8 @@ const createPost = (content, userEmail) => createPostForRecipe(content, userEmai
 const getPosts = () => getPostsRecipe();
 const editPost = (idPost, content) => editPostRecipe(idPost, content);
 const deletePost = (idPost) => deletePostRecipe(idPost);
-  
- export {
+
+export {
   login,
   register,
   logout,
@@ -29,7 +29,3 @@ const deletePost = (idPost) => deletePostRecipe(idPost);
   editPost,
   deletePost,
 };
-
-
-
-

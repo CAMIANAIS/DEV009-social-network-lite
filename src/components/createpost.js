@@ -1,5 +1,8 @@
-import { createPost, editPost, deletePost, getLoggedInUser, getPosts } from '../lib/index.js';
+import {
+  createPost, editPost, deletePost, getLoggedInUser, getPosts,
+} from '../lib/index.js';
 import { UserLogeado } from './boolLoggedIn';
+import { showConfirmationDialog } from './confirmationModal.js';
 
 export const createPostModal = () => {
   if (UserLogeado()) {
@@ -17,18 +20,19 @@ export const createPostModal = () => {
     buttonPost.textContent = 'Post';
 
     const postsList = document.createElement('ul');
+    postsList.textContent = 'Your Posts';
     postsList.className = 'posts-list';
 
     const posts = getPosts();
 
     posts.forEach((post) => {
       const postItem = document.createElement('li');
-      postItem.className = 'li-postComents';
-
+      postItem.className = 'li-posts';
       const postEmail = document.createElement('p');
       postEmail.className = 'post-email';
       postEmail.textContent = post.email;
-
+      const containerIcons = document.createElement('div');
+      containerIcons.className = 'container-btn';
       const postText = document.createElement('p');
       postText.textContent = post.content;
 
@@ -41,7 +45,7 @@ export const createPostModal = () => {
       deleteBtn.classList.add('delete');
 
       editBtn.addEventListener('click', () => {
-        const newContent = prompt('Enter new content:');
+        const newContent = prompt('Edita tu publicación:');
         if (newContent !== null) {
           editPost(post.id, newContent);
           postText.textContent = newContent;
@@ -49,14 +53,15 @@ export const createPostModal = () => {
       });
 
       deleteBtn.addEventListener('click', () => {
-        const confirmDelete = confirm('¿Estás seguro de que deseas eliminar este comentario?');
-        if (confirmDelete) {
-          deletePost(post.id);
-          postsList.removeChild(postItem);
-        }
+        showConfirmationDialog('¿Are you sure you want to delete this post?', (confirmed) => {
+          if (confirmed) {
+            deletePost(post.id);
+            postsList.removeChild(postItem);
+          }
+        });
       });
-
-      postItem.append(postEmail, postText, editBtn, deleteBtn);
+      containerIcons.append(editBtn, deleteBtn);
+      postItem.append(postEmail, postText, containerIcons);
       postsList.appendChild(postItem);
     });
 
@@ -72,11 +77,10 @@ export const createPostModal = () => {
     content.append(inputPost, buttonPost, postsList);
     modal.append(content);
 
-  
     document.body.append(modal);
-  // Función para cerrar el modal
-  const closeModal = () => {
-    document.body.removeChild(modal);
+    // Función para cerrar el modal
+    const closeModal = () => {
+      document.body.removeChild(modal);
     };
 
     // Escuchar clics en el modal
@@ -89,9 +93,6 @@ export const createPostModal = () => {
     });
 
     return modal;
-    
   }
+  return null;
 };
-
-
-

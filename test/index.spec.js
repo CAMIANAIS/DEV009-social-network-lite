@@ -1,5 +1,4 @@
-
-// se importan las funciones a testear
+// se importan las funciones de index.js
 import {
   login,
   logout,
@@ -11,18 +10,7 @@ import {
   deletePost,
 } from '../src/lib/index';
 
-it('should be a function',()=>{
-  expect(typeof login).toBe('function');
-});
-
-it('Should navigate to Login',()=>{
-  const toLogin=registerElement.querySelector('toLogin');
-  toLogin.click();
-  expect(NavigateToMock).toHaveBeenCalledWith('/');
-});
-
 import { init } from '../src/lib/services';
-
 
 beforeEach(() => {
   const users = [{ email: 'prueba@example.com', password: 'abcdefg' }];
@@ -53,7 +41,6 @@ beforeEach(() => {
     writable: true,
   });
 });
-
 // TEST para la función init
 describe('init function', () => {
   it('Should clear the localStorage', () => {

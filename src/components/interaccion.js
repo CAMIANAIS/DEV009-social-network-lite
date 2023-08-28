@@ -1,31 +1,46 @@
-import { getLoggedInUser } from '../lib/index.js';
+/* import { getLoggedInUser } from '../lib/index.js';
 import { UserLogeado } from './boolLoggedIn';
-import { edittModal } from './editpost.js';
 
 export const handleInteractionPosts = () => {
-    if (UserLogeado()) {
-    // Obtener el email del usuario logeado
-      const userEmail = getLoggedInUser().email;
+  if (UserLogeado()) {
+    const userEmail = getLoggedInUser().email;
 
-    // Comments
-    const commentIcon = document.createElement('icon');
-    commentIcon.className = 'comment';
-    commentIcon.addEventListener('click', () => {
-      openCommentModal();
+    // Recorre los posts y agrega interacciones a cada uno
+    posts.forEach(() => {
+      const likesCount = document.createElement('span');
+      likesCount.textContent = `${post.likes.length} Likes`;
+
+      const likeBtn = document.createElement('img');
+      likeBtn.src = 'components/img/like.png';
+      likeBtn.classList.add('like');
+
+      if (post.likes.includes(userEmail)) {
+        likeBtn.classList.add('active');
+      }
+
+      likeBtn.addEventListener('click', () => {
+        if (likeBtn.classList.contains('active')) {
+          likeBtn.classList.remove('active');
+
+          const index = post.likes.indexOf(userEmail);
+          if (index !== -1) post.likes.splice(index, 1);
+        } else {
+          likeBtn.classList.add('active');
+          post.likes.push(userEmail);
+        }
+
+        localStorage.setItem(`postLikes_${post.id}`, JSON.stringify(post.likes));
+        likesCount.textContent = `${post.likes.length} Likes`;
+      });
+
+      const iconContainer = document.createElement('div');
+      iconContainer.className = 'icons-container-likes';
+
+      const displayInformation = document.createElement('div');
+      displayInformation.className = 'display-information';
+
+      iconContainer.appendChild(likeBtn);
+      displayInformation.appendChild(likesCount);
     });
-
-    const commentAll = document.createElement('p');
-    commentAll.className = 'commentPostAll';
-    commentAll.textContent = 'View all comments';
-    commentAll.addEventListener('click', () => {
-      openCommentsModal();
-    });
-
-    // Mostrar información
-    const displayInformation = document.createElement('div');
-    displayInformation.className = 'display-information-allComents';
-
-    displayInformation.append(commentAll);
-    recipeElement.append(displayInformation);
-    }
-   };
+  }
+}; */

@@ -1,25 +1,27 @@
 /* import { createDropdownMenu } from './desplegable.js'; */
-import { editModal } from './editpost.js';
-import { createPostModal } from './createpost.js'; 
+import { createPostModal } from './createpost.js';
+import { createLoginArea } from './loginConfirm.js';
+/* import { handleInteractionPosts } from './interaccion.js'; */
 
 function publish(navigateTo) {
   const section3 = document.createElement('section');
   const containerHeader = document.createElement('header');
   containerHeader.classList.add('header');
-  const sandwich=document.createElement('img');
+  const sandwich = document.createElement('img');
   /* const menuComponents = createDropdownMenu(); */
-  sandwich.src="components/img/bars-solid.svg";
+  sandwich.src = 'components/img/bars-solid.svg';
   sandwich.classList.add('img-logo');
   const title = document.createElement('h2');
   title.textContent = 'Arequipa 360';
 
-  const postStart=document.createElement('div');
+  const postStart = document.createElement('div');
   postStart.classList.add('postInput');
-  postStart.innerHTML=`
+  postStart.innerHTML = `
 
   <img src="components/img/user1.png" class="user1" alt="user1">
   <input id="inputFeed" class="inputFeed" placeholder="Ali, let us to know about your experience">
   `;
+
   const postDefect1 = document.createElement('div');
   postDefect1.classList.add('idpost1');
   postDefect1.innerHTML = `
@@ -31,12 +33,13 @@ function publish(navigateTo) {
       <img src="components/img/experience1.jpg" class="exp" alt="exp-user2">
       <p> Me gusto la experiencia en Uchumayo, viaje en familia y...ver mas</p>
     </div>
-    <div class="contenedoriconos">
-      <img src="components/img/like.png" class="like" alt="like">
-      <img src="components/img/comments-regular.svg" class="comment" alt="comment">
-    </div>
+
 
     `;
+  const likeBtn = document.createElement('img');
+  likeBtn.src = 'components/img/like.png';
+  likeBtn.classList.add('like');
+
   const postDefect2 = document.createElement('div');
   postDefect2.classList.add('idpost2');
   postDefect2.innerHTML = `
@@ -52,28 +55,20 @@ function publish(navigateTo) {
       <img src="components/img/like.png" class="like" alt="like">
       <img src="components/img/comments-regular.svg" class="comment" alt="comment">
     </div>
-
-      
   `;
   containerHeader.appendChild(sandwich);
-  /*containerHeader.appendChild(menuComponents.navElement);*/
+  containerHeader.appendChild(createLoginArea(navigateTo));
+  /* containerHeader.appendChild(menuComponents.navElement); */
   section3.appendChild(containerHeader);
 
-  sandwich.addEventListener('click', () => {
-    editModal();
-  });
+  /* likeBtn.addEventListener('click', () => {
+    handleInteractionPosts();
+  }); */
 
-  postStart.addEventListener('click',()=>{
+  postStart.addEventListener('click', () => {
     createPostModal();
-    /* document.body.appendChild(createPost); */
-  }); 
-
-  postDefect1.addEventListener('click',()=>{
-    editModal();
-    /* document.body.appendChild(createPost); */
-  }); 
-  section3.append(postStart, postDefect1, postDefect2);
+  });
+  section3.append(postStart, postDefect1, likeBtn, postDefect2);
   return section3;
 }
 export default publish;
-
