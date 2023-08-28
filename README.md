@@ -42,19 +42,19 @@ Los lenguajes utilizados fueron HTML semántico, CSS y JavaScript Vanilla. Se cr
 Se trabajo en la elaboración de un prototipo a papel ,luego uno de alta fidelidad el cual fue evaluado por nuestras compañeras de las cuales recibi feedback para posteriormente y después de aplicar las sugerencias , volver a solicitarles ayuda en el test de usabilidad.
 
 #### Prototipo de baja fidelidad
-![user story 1](src/img/baja-fidelidad.png)
+![user story 1](src/components/img/baja-fidelidad.png)
 
 #### Prototipos de alta fidelidad
-![prototipo alta 1](src/img/prototipo-alta.png)
+![prototipo alta 1](src/components/img/prototipo-alta.png)
 
  Prototipo dinámico: [prototipo dinamico](https://www.figma.com/proto/vvNUtz6OP1hfzPwJ7nNjHw/Untitled?type=design&node-id=1-136&t=stdBuyPXIzTgPZDp-1&scaling=scale-down&page-id=0%3A1&starting-point-node-id=1%3A136&show-proto-sidebar=1&mode=design)
 
 #### Listado de problemas de usabilidad detectados 
 
 Hicimos test de usabilidad recibiendo como feedback los siguiente.
-![feedback](test-usabilidad-a.png)
-![feedbackb](test-usabilidad.png)
-![prototitpo alta 2](src/img/prototipo-fidelidad-corregido.png)
+![feedback](src/components/img/test-usabilidad-a.png)
+![feedbackb](src/components/img/test-usabilidad.png)
+![prototitpo alta 2](src/components/img/prototipo-fidelidad-corregido.png)
 
 
 Usamos para el diseño de ambos protipos [Figma](https://www.figma.com/) 
@@ -62,5 +62,5 @@ Usamos para el diseño de ambos protipos [Figma](https://www.figma.com/)
 
 El proyecto cuenta con test para las funciones encargadas de  crear, editar, borrar publicaciones. Asi como mantener al usuario logueado, salir sesión.
 ## 6. Resultado
-![result 1]
-![result 2]
+![result 1](src/components/img/resultado.png)
+![result 2](src/components/img/resultado-2.png)
