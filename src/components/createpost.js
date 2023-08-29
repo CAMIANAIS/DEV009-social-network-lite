@@ -72,11 +72,11 @@ export const createPostModal = () => {
       const inputValue = inputPost.value;
       createPost(inputValue, userEmail);
       const newPostItem = document.createElement('li');
-      
+
       // ... Create and append new post elements similar to the code above ...
       postsList.appendChild(newPostItem);
-        // Limpiar el valor del campo de entrada después de crear el post
-      inputPost.value = "";
+      // Limpiar el valor del campo de entrada después de crear el post
+      inputPost.value = '';
     });
 
     content.append(inputPost, buttonPost, postsList);

@@ -214,8 +214,8 @@ describe('editPost function', () => {
 
   it('Should throw an error if the post to edit does not exist', () => {
     const mockPosts = [
-      { id: 'post1', content: 'Test content 1', email: 'test1@example.com' },
-      { id: 'post2', content: 'Test content 2', email: 'test2@example.com' },
+      { id: 'post1', content: 'Test content 1', email: 'prueba1@example.com' },
+      { id: 'post2', content: 'Test content 2', email: 'prueba2@example.com' },
     ];
     localStorage.getItem.mockReturnValueOnce(JSON.stringify(mockPosts));
 
@@ -226,8 +226,8 @@ describe('editPost function', () => {
 
   it('Should edit the post content correctly', () => {
     const mockPosts = [
-      { id: 'post1', content: 'Test content 1', email: 'test1@example.com' },
-      { id: 'post2', content: 'Test content 2', email: 'test2@example.com' },
+      { id: 'post1', content: 'Test content 1', email: 'prueba1@example.com' },
+      { id: 'post2', content: 'Test content 2', email: 'prueba2@example.com' },
     ];
     const updatedContent = 'Updated content for post1';
     localStorage.getItem.mockReturnValueOnce(JSON.stringify(mockPosts));
@@ -235,8 +235,8 @@ describe('editPost function', () => {
     editPost('post1', updatedContent);
 
     const updatedPosts = [
-      { id: 'post1', content: updatedContent, email: 'test1@example.com' },
-      { id: 'post2', content: 'Test content 2', email: 'test2@example.com' },
+      { id: 'post1', content: updatedContent, email: 'prueba1@example.com' },
+      { id: 'post2', content: 'Test content 2', email: 'prueba2@example.com' },
     ];
     expect(localStorage.setItem).toHaveBeenCalledWith('posts', JSON.stringify(updatedPosts));
   });
