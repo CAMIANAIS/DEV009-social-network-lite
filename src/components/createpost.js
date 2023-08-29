@@ -1,4 +1,4 @@
-import iconoEdit from './img//trash-can-regular.svg';
+import iconoEdit from './img/edit.svg';
 import iconoDelete from './img/trash-can-regular.svg';
 import {
   createPost, editPost, deletePost, getLoggedInUser, getPosts,
