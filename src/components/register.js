@@ -1,3 +1,5 @@
+import imagenfondo from './img/fondo.jpg';
+import imagenlogo from './img/logo.png';
 import { register } from '../lib/index.js';
 
 function createRegisterForm(navigateTo) {
@@ -11,10 +13,16 @@ function createRegisterForm(navigateTo) {
   inputPass.type = 'password';
   const buttonRegister = document.createElement('button');
   const buttonReturn1 = document.createElement('button');
-  const background = document.createElement('img');
-  background.src = 'components/img/fondo.jpg';
-  const logo = document.createElement('img');
-  logo.src = 'components/img/logo.png';
+
+  const background = document.createElement('img'); // Create an img element
+  background.src = imagenfondo;
+  background.alt = 'fondo';
+  background.classList.add('img'); // Add the class 'img'
+
+  const logo = document.createElement('img'); // Create an img element
+  logo.src = imagenlogo;
+  logo.alt = 'logo';
+  logo.classList.add('logo'); // Add the class 'img'
   // Añade clases a los elementos para estilizarlos con CSS
   section1.classList.add('containerRegister');
   inputName.classList.add('input-field');
@@ -30,7 +38,7 @@ function createRegisterForm(navigateTo) {
   inputName.placeholder = 'Names';
   inputApellidos.placeholder = 'Surnames';
   inputEmail.placeholder = 'Email';
-  inputPass.placeholder = 'Pssword';
+  inputPass.placeholder = 'Password';
 
   title.textContent = 'Welcome to Arequipa 360';
   buttonRegister.textContent = 'Registrarse';
@@ -44,12 +52,25 @@ function createRegisterForm(navigateTo) {
     const email = document.querySelector('.input-fieldEmail').value;
     const password = document.querySelector('.input-fieldPassword').value;
 
-    const success = register(email, password); // Llama a la función de registro
-    if (success) {
-      alert('Usuario registrado exitosamente');
-      navigateTo('/login'); // Navegar al login para su primer inicio de sesión
-    } else {
-      alert('Error al registrar usuario:');
+    try {
+      if (register(email, password)) {
+        alert('User registered successfully!');
+        navigateTo('/login');
+      }
+    } catch (error) {
+      switch (error.message) {
+        case 'Invalid email':
+          alert('Please enter a valid email.');
+          break;
+        case 'Password must be at least 6 characters long':
+          alert('Password must be at least 6 characters long.');
+          break;
+        case 'User already exists':
+          alert('This user is already registered. Please try logging in.');
+          break;
+        default:
+          alert('An error occurred during registration');
+      }
     }
   });
   containerContent.append(

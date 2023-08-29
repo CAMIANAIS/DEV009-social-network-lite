@@ -1,3 +1,5 @@
+import iconoEdit from './img//trash-can-regular.svg';
+import iconoDelete from './img/trash-can-regular.svg';
 import {
   createPost, editPost, deletePost, getLoggedInUser, getPosts,
 } from '../lib/index.js';
@@ -37,11 +39,11 @@ export const createPostModal = () => {
       postText.textContent = post.content;
 
       const editBtn = document.createElement('img');
-      editBtn.src = 'components/img/edit.svg';
+      editBtn.src = iconoEdit;
       editBtn.classList.add('edit');
 
       const deleteBtn = document.createElement('img');
-      deleteBtn.src = 'components/img/trash-can-regular.svg';
+      deleteBtn.src = iconoDelete;
       deleteBtn.classList.add('delete');
 
       editBtn.addEventListener('click', () => {

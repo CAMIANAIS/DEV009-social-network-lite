@@ -1,3 +1,5 @@
+import imagenfondo from './img/fondo.jpg';
+import imagenlogo from './img/logo.png';
 import { login } from '../lib/index.js';
 
 function createLogin(navigateTo) {
@@ -9,18 +11,22 @@ function createLogin(navigateTo) {
   inputPass.type = 'password';
   const buttonLogin = document.createElement('button');
   const buttonReturn = document.createElement('button');
-  const background = document.createElement('img');
-  background.src = 'components/img/fondo.jpg';
-  const logo = document.createElement('img');
-  logo.src = 'components/img/logo.png';
+
+  const background = document.createElement('img'); // Create an img element
+  background.src = imagenfondo;
+  background.alt = 'fondo';
+  background.classList.add('img'); // Add the class 'img'
+
+  const logo = document.createElement('img'); // Create an img element
+  logo.src = imagenlogo;
+  logo.alt = 'logo';
+  logo.classList.add('logo'); // Add the class 'img'
 
   inputEmail.classList.add('input-fieldEmail');
   inputPass.classList.add('input-fieldPassword');
   buttonLogin.classList.add('btn');
   buttonReturn.classList.add('btn');
   containerContent.classList.add('container-content');
-  background.classList.add('img');
-  logo.classList.add('logo');
 
   inputEmail.placeholder = 'Email';
   inputPass.placeholder = 'Password';

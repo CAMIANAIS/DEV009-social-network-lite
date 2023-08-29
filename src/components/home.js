@@ -1,3 +1,5 @@
+import imagenfondo from './img/fondo.jpg';
+
 function home(navigateTo) {
   const section = document.createElement('section');
   const title = document.createElement('h1');
@@ -5,8 +7,11 @@ function home(navigateTo) {
   const button2 = document.createElement('button');
   const description = document.createElement('p');
   const containerBtn = document.createElement('div');
-  const background = document.createElement('img');
-  background.src = 'components/img/fondo.jpg';
+  const background = document.createElement('img'); // Create an img element
+
+  background.src = imagenfondo;
+  background.alt = 'fondo';
+  background.classList.add('img'); // Add the class 'img'
 
   button.textContent = 'Login';
   button.addEventListener('click', () => {
@@ -25,7 +30,6 @@ function home(navigateTo) {
   description.classList.add('description');
   button.classList.add('btn1');
   button2.classList.add('btn1');
-  background.classList.add('img');
 
   containerBtn.appendChild(button);
   containerBtn.appendChild(button2);

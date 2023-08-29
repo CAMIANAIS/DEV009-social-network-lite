@@ -7,9 +7,8 @@
 * [3. Herramientas](#3-herramientas)
 * [4. Historias de usuario](#4-historias-de-usuario)
 * [5. Prototipos](#5-prototipos)
-* [6. Planificación del proyecto](#6-planificación del proyecto)
-* [7. Resultado](#6-resultado)
-
+* [6. Planificación del proyecto](#6-planificacion del proyecto)
+* [7. Resultado](#7-resultado)
 ***
 
 ## 1. Preámbulo
@@ -51,7 +50,7 @@ Se trabajo en la elaboración de un prototipo a papel ,luego uno de alta fidelid
 
 #### Listado de problemas de usabilidad detectados 
 
-Hicimos test de usabilidad recibiendo como feedback los siguiente.
+Hice un test de usabilidad recibiendo como feedback los siguiente.
 ![feedback](src/components/img/test-usabilidad-a.png)
 ![feedbackb](src/components/img/test-usabilidad.png)
 ![prototitpo alta 2](src/components/img/prototipo-fidelidad-corregido.png)

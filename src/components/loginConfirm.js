@@ -1,3 +1,4 @@
+import logoutimg from './img/log-out.svg';
 import { UserLogeado } from './boolLoggedIn';
 import { logout } from '../lib/index';
 
@@ -15,8 +16,8 @@ export const createLoginArea = (navigateTo) => {
   login.classList.add('login');
 
   const div4 = document.createElement('img');
-  div4.src = 'components/img/log-out.svg';
-  div4.classList.add('like');
+  div4.src = logoutimg;
+  div4.classList.add('log-out');
 
   const loginLink = document.createElement('a');
   loginLink.id = 'login-link';
@@ -32,8 +33,9 @@ export const createLoginArea = (navigateTo) => {
 
   updateLoginLink();
 
-  loginLink.addEventListener('click', (event) => handleLoginClick(event, navigateTo));
+  div4.addEventListener('click', (event) => handleLoginClick(event, navigateTo));
 
-  login.append(div4, loginLink);
+  login.appendChild(div4);
+  login.appendChild(loginLink);
   return login;
 };
