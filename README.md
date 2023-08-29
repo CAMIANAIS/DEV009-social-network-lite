@@ -7,7 +7,7 @@
 * [3. Herramientas](#3-herramientas)
 * [4. Historias de usuario](#4-historias-de-usuario)
 * [5. Prototipos](#5-prototipos)
-* [6. Planificación del proyecto](#6-planificacion del proyecto)
+* [6. Planificación del proyecto](#6-planificacion-del-proyecto)
 * [7. Resultado](#7-resultado)
 ***
 
