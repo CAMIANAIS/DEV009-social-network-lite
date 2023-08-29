@@ -7,7 +7,7 @@
 * [3. Herramientas](#3-herramientas)
 * [4. Historias de usuario](#4-historias-de-usuario)
 * [5. Prototipos](#5-prototipos)
-* [6. Planificaci[on del proyecto]](#6-planificaci[on del proyecto])
+* [6. Planificación del proyecto](#6-planificación del proyecto)
 * [7. Resultado](#6-resultado)
 
 ***
@@ -57,10 +57,16 @@ Hicimos test de usabilidad recibiendo como feedback los siguiente.
 ![prototitpo alta 2](src/components/img/prototipo-fidelidad-corregido.png)
 
 
-Usamos para el diseño de ambos protipos [Figma](https://www.figma.com/) 
+Use para el diseño de ambos protipos [Figma](https://www.figma.com/) 
 ### Pruebas unitarias
 
 El proyecto cuenta con test para las funciones encargadas de  crear, editar, borrar publicaciones. Asi como mantener al usuario logueado, salir sesión.
-## 6. Resultado
+
+## 6. Planificación del proyecto
+
+Me planifiqué en Git Hub projects, este me ayudo a optimizar mi proceso y hacerle seguimiento a mi avance diario.
+![plicificacion 1](src/components/img/planificacion-1.png)
+![planificacion 2](src/components/img/planificacion-2.png)
+## 7. Resultado
 ![result 1](src/components/img/resultado.png)
 ![result 2](src/components/img/resultado-2.png)
